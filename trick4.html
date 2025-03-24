@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="scramble">Hello, World!</h1>
+    <button onclick="scrambleText()">Scramble!</button>
+
+    <script>
+      function scrambleText() {
+        const textElement = document.getElementById("scramble");
+        const originalText = textElement.innerText;
+        const chars = "!@#$%^&*()_+=-[]{};:,.<>?";
+
+        let i = 0;
+        const interval = setInterval(() => {
+          textElement.innerText = originalText
+            .split("")
+            .map((letter, index) =>
+              index < i
+                ? letter
+                : chars[Math.floor(Math.random() * chars.length)]
+            )
+            .join("");
+
+          if (i >= originalText.length) clearInterval(interval);
+          i++;
+        }, 100);
+      }
+    </script>
+  </body>
+</html>
