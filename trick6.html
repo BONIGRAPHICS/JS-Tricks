@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Falling Button Trick</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      #falling-btn {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        font-size: 16px;
+        background: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="falling-btn" onclick="fall()">Click Me</button>
+
+    <script>
+      function fall() {
+        let btn = document.getElementById("falling-btn");
+        let position = 50;
+        let speed = 2;
+        let gravity = 1.05;
+
+        let fallInterval = setInterval(() => {
+          position += speed;
+          speed *= gravity; // Increases speed over time (gravity effect)
+          btn.style.top = position + "px";
+
+          if (position > window.innerHeight - 50) {
+            clearInterval(fallInterval); // Stops when reaching the bottom
+          }
+        }, 20);
+      }
+    </script>
+  </body>
+</html>
