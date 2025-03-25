@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghost Typing Effect</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 50px;
+      }
+      #typing-text {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="typing-text"></h1>
+
+    <script>
+      const text = "Hello, I'm a ghost typing this... 👻";
+      let index = 0;
+
+      function typeText() {
+        if (index < text.length) {
+          document.getElementById("typing-text").innerHTML +=
+            text.charAt(index);
+          index++;
+          setTimeout(typeText, 100); // Adjust speed here
+        }
+      }
+
+      typeText(); // Start typing effect
+    </script>
+  </body>
+</html>
