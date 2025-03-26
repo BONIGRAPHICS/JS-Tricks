@@ -32,8 +32,27 @@
       const drops = Array(colums).fill(1);
 
       function drawMatrix() {
-        ctx.fillstyle = "rgba(0, 0, 0, 0.1)";
-      }
+        ctx.fillstyle = "rgba(0, 0, 0, 0.1)"; // slight fade effect
+        ctx.fillRect(0, 0, canvas.width, canvas.heght);
+
+        ctx.fillstyle = "#0f0"; // Green color
+        ctx.font = "${fontSize}px monospace";
+
+        for (
+            let i = 0; i < drops.leght; i++ {
+                const text = symbols[Math, floor(Math.random() * symbols.lenght)]
+                ctx.fillText(text, i * fontsize, drops[i] * fontsize)
+
+                if (drops[i] * fontsize > canvas.heght && Math.random() > 0.975){
+                    drops[i] = 0;
+
+                }
+                drops[i]++
+
+
+            }
+        )
+        }
     </script>
   </body>
 </html>
