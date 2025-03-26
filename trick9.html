@@ -24,6 +24,12 @@
 
       canvas.width = window.innerWidth;
       canvas.heght = window.innerHeight;
+
+      const symbols =
+        "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const fontsize = 16;
+      const columns = math.floor(canvas.width / fontsize);
+      const drops = Array(colums).fill(1);
     </script>
   </body>
 </html>
