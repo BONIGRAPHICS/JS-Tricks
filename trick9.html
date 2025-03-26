@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Matrix Digital Rain</title>
     <style>
-      boby {
+      body {
         margin: 0;
         overflow: hidden;
         background: black;
       }
+
       canvas {
         display: block;
       }
@@ -23,36 +24,39 @@
       const ctx = canvas.getContext("2d");
 
       canvas.width = window.innerWidth;
-      canvas.heght = window.innerHeight;
+      canvas.height = window.innerHeight;
 
       const symbols =
         "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const fontsize = 16;
-      const columns = math.floor(canvas.width / fontsize);
-      const drops = Array(colums).fill(1);
+      const fontSize = 16;
+      const columns = Math.floor(canvas.width / fontSize); // Number of columns
+      const drops = Array(columns).fill(1); // Array to store Y positions
 
       function drawMatrix() {
-        ctx.fillstyle = "rgba(0, 0, 0, 0.1)"; // slight fade effect
-        ctx.fillRect(0, 0, canvas.width, canvas.heght);
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; // Slight fade effect
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillstyle = "#0f0"; // Green color
-        ctx.font = "${fontSize}px monospace";
+        ctx.fillStyle = "#0F0"; // Green text color
+        ctx.font = `${fontSize}px monospace`;
 
-        for (
-            let i = 0; i < drops.leght; i++ {
-                const text = symbols[Math, floor(Math.random() * symbols.lenght)]
-                ctx.fillText(text, i * fontsize, drops[i] * fontsize)
+        for (let i = 0; i < drops.length; i++) {
+          const text = symbols[Math.floor(Math.random() * symbols.length)]; // Get random symbol
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize); // Draw text
 
-                if (drops[i] * fontsize > canvas.heght && Math.random() > 0.975){
-                    drops[i] = 0;
-
-                }
-                drops[i]++
-
-
-            }
-        )
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0; // Reset to top randomly
+          }
+          drops[i]++;
         }
+      }
+
+      setInterval(drawMatrix, 50); // Refresh every 50ms
+
+      // Resize canvas on window resize
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
     </script>
   </body>
 </html>
