@@ -7,5 +7,47 @@
   </head>
   <body>
     <div id="terminal"></div>
+    <script>
+      const terminal = document.getElementById("terminal");
+
+      const hackerTexts = [
+        "Initializing hack sequence...",
+        "Connecting to the mainframe...",
+        "Bypassing firewall...",
+        "Accessing secure data...",
+        "Injecting payload...",
+        "Decrypting sensitive files...",
+        "Uploading virus...",
+        "Covering tracks...",
+        "Disconnecting...",
+        "Hack complete. System compromised!",
+      ];
+
+      function typeEffect(text, speed = 50) {
+        return new Promise((resolve) => {
+          let i = 0;
+          function type() {
+            if (i < text.length) {
+              terminal.innerHTML += text[i];
+              i++;
+              setTimeout(type, speed);
+            } else {
+              terminal.innerHTML += "\n";
+              resolve();
+            }
+          }
+          type();
+        });
+      }
+
+      async function startHacking() {
+        for (let line of hackerTexts) {
+          await typeEffect("> " + line);
+          await new Promise((res) => setTimeout(res, 500));
+        }
+      }
+
+      startHacking();
+    </script>
   </body>
 </html>
