@@ -12,5 +12,31 @@
       }
     </style>
   </head>
-  <body></body>
+  <body>
+    <script>
+      document.addEventListener("mousemove", function (event) {
+        let particle = document.createElement("div");
+        particle.style.position = "absolute";
+        particle.style.width = "10px";
+        particle.style.height = "10px";
+        particle.style.borderRadius = "50%";
+        particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        particle.style.left = `${event.clientX}px`;
+        particle.style.top = `${event.clientY}px`;
+        particle.style.pointerEvents = "none";
+        particle.style.boxShadow = "0 0 10px white";
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.style.opacity = "0";
+          particle.style.transform = "scale(2)";
+          particle.style.transition = "opacity 0.5s, transform 0.5s";
+        }, 10);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 500);
+      });
+    </script>
+  </body>
 </html>
