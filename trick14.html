@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>🌈 Glowing Rainbow Text ✨</title>
     <style>
       body {
         display: flex;
@@ -33,9 +33,19 @@
         background-size: 400%;
         -webkit-background-clip: text;
         color: transparent;
-        animation: rainbow 5s linear infinite;
+        animation: rainbow 5s linear infinite, glow 1.5s infinite alternate;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        transition: transform 0.3s ease-in-out;
       }
 
+      /* Hover effect to make it bigger */
+      h1:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 30px rgba(255, 255, 255, 1),
+          0 0 50px rgba(255, 255, 255, 0.8);
+      }
+
+      /* Smooth rainbow animation */
       @keyframes rainbow {
         0% {
           background-position: 0% 50%;
@@ -47,9 +57,20 @@
           background-position: 0% 50%;
         }
       }
+
+      /* Glow effect animation */
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        to {
+          text-shadow: 0 0 30px rgba(255, 255, 255, 1),
+            0 0 50px rgba(255, 255, 255, 0.8);
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>✨ Magic Text ✨</h1>
+    <h1>✨ Glowing Magic Text ✨</h1>
   </body>
 </html>
