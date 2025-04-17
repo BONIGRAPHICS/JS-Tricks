@@ -104,9 +104,9 @@ If you find it helpful, consider giving it a ⭐️!
 
 ## 📬 Contact
 
-- 📧 Email: bonigraphics@example.com *(replace with your real email)*
+- 📧 Email: bonigraphics@yahoo.com *(bonigraphics@yahoo.com )*
 - 🌐 Website: [msetitech.co.tz](https://msetitech.co.tz)
-- 🐙 GitHub: [@your-username](https://github.com/your-username)
+- 🐙 GitHub: [@BONIGRAPHICS](https://github.com/BONIGRAPHICS)
 
 ---
 
