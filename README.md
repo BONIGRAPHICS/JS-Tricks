@@ -71,12 +71,6 @@ Here’s how you can contribute:
 I'll be adding preview GIFs or screenshots for each trick.  
 This will help you quickly see what each trick does before clicking into it.
 
-> Example (placeholder):
-
-![trick1 preview](https://via.placeholder.com/400x200?text=trick1+preview)
-
----
-
 ## 🛠️ Roadmap
 
 Here are some things planned for the future:
@@ -91,7 +85,7 @@ Here are some things planned for the future:
 
 ---
 
-## 👨‍💻 About the Creator
+## 👨‍💻 About Me
 
 Hi! I’m **Boni Graphics** 👋  
 I'm passionate about front-end development and sharing creative UI tricks using **JavaScript**, **HTML**, and **CSS**.
