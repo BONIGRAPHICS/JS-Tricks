@@ -122,13 +122,3 @@ See the [LICENSE](LICENSE) file for full details.
 > _“A small trick a day keeps the boredom away.”_
 
 Thanks for visiting! 😊
-```
-
----
-
-### ✅ Next Steps (Optional Help)
-- Want me to generate a **banner image** for your GitHub repo header?
-- Want help setting up **GitHub Pages** for live previews?
-- Want a basic **LICENSE** file too?
-
-Just say the word and I’ll help you roll it out step-by-step.
