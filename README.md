@@ -1,8 +1,3 @@
-Absolutely! Here's your full, polished `README.md` file with **all** the content we've discussed — cleanly organized, detailed, and ready for GitHub 💪
-
----
-
-```markdown
 # ✨ JavaScript Tricks with HTML & CSS
 
 Welcome to my collection of simple and useful JavaScript tricks!  
