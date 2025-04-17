@@ -31,22 +31,11 @@ All the code (HTML + CSS + JS) is inside each file.
 
 1. Clone the repo:
 ```bash
-git clone https://github.com/your-username/js-tricks.git
+https://github.com/BONIGRAPHICS/JS-Tricks.git
 ```
 
 2. Open any `trickX.html` file in your browser.
 3. Explore and enjoy!
-
----
-
-## 🌟 Tricks List
-
-- `trick1.html` - Hover Button Ripple Effect
-- `trick2.html` - Dark Mode Toggle
-- `trick3.html` - Copy to Clipboard
-- `trick4.html` - Typewriter Animation
-- `trick5.html` - Animated Hamburger Menu
-- More tricks coming soon... stay tuned!
 
 ---
 
