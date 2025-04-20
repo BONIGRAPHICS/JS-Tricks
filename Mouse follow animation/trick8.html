@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Mouse Follow Animation</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-color: #222;
+        overflow: hidden;
+      }
+      .follow {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #ff6347;
+        border-radius: 50%;
+        pointer-events: none; /* Prevents blocking mouse events */
+        transition: transform 0.1s ease-out;
+        will-change: transform;
+      }
+      /* Make the circle grow and shrink based on speed */
+      .follow.large {
+        width: 70px;
+        height: 70px;
+      }
+      .follow.small {
+        width: 30px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Multiple circles following the mouse -->
+    <div class="follow" id="follow-1"></div>
+    <div class="follow" id="follow-2"></div>
+    <div class="follow" id="follow-3"></div>
+
+    <script>
+      const followElements = document.querySelectorAll(".follow");
+      let lastX = 0,
+        lastY = 0,
+        speed = 0;
+
+      // Function to generate random colors
+      function randomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      document.addEventListener("mousemove", (e) => {
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+
+        // Calculate speed based on the difference between previous and current position
+        speed = Math.sqrt(
+          Math.pow(mouseX - lastX, 2) + Math.pow(mouseY - lastY, 2)
+        );
+        lastX = mouseX;
+        lastY = mouseY;
+
+        followElements.forEach((follow, index) => {
+          let offsetX = mouseX - follow.offsetWidth / 2;
+          let offsetY = mouseY - follow.offsetHeight / 2;
+
+          // Calculate smooth following effect
+          follow.style.transition = "transform 0.1s ease-out";
+          follow.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+          // Adjust size based on speed
+          if (speed > 10) {
+            follow.classList.add("large");
+            follow.classList.remove("small");
+          } else if (speed < 3) {
+            follow.classList.add("small");
+            follow.classList.remove("large");
+          } else {
+            follow.classList.remove("large", "small");
+          }
+
+          // Change color based on speed
+          follow.style.backgroundColor = randomColor();
+        });
+      });
+    </script>
+  </body>
+</html>

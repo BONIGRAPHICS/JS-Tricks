@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghost Typing Effect 👻</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: "Courier New", monospace;
+        background-color: black;
+        color: white;
+        margin-top: 50px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+      #typing-text {
+        display: inline;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      #cursor {
+        font-size: 24px;
+        font-weight: bold;
+        animation: blink 0.5s infinite alternate;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      span.fade {
+        display: inline-block;
+        opacity: 0;
+        animation: fade-in 0.3s forwards;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        width: 50%;
+        text-align: center;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>👻 Ghost Typing Effect</h1>
+    <h2><span id="typing-text"></span><span id="cursor">|</span></h2>
+
+    <input type="text" id="userInput" placeholder="Type your own message..." />
+    <button onclick="startGhostTyping()">Start Ghost Typing</button>
+
+    <script>
+      let customText = "Boo! I'm a ghost typing this... 👻";
+      let index = 0;
+
+      function typeText() {
+        if (index < customText.length) {
+          let span = document.createElement("span");
+          span.textContent = customText.charAt(index);
+          span.classList.add("fade");
+          span.style.animationDelay = `${index * 0.1}s`; // Delay each letter
+          document.getElementById("typing-text").appendChild(span);
+          index++;
+          setTimeout(typeText, 100); // Typing speed
+        } else {
+          document.getElementById("cursor").style.display = "none"; // Hide cursor after typing
+        }
+      }
+
+      function startGhostTyping() {
+        customText =
+          document.getElementById("userInput").value ||
+          "Boo! I'm a ghost typing this... 👻";
+        document.getElementById("typing-text").innerHTML = "";
+        document.getElementById("cursor").style.display = "inline";
+        index = 0;
+        typeText();
+      }
+
+      // Start the effect automatically
+      typeText();
+    </script>
+  </body>
+</html>

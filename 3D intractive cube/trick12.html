@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Interactive Cube</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: black;
+        overflow: hidden;
+        perspective: 800px;
+      }
+
+      .cube {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        transform-style: preserve-3d;
+        transform: rotateX(0deg) rotateY(0deg);
+        transition: transform 0.1s linear;
+        cursor: grab;
+      }
+
+      .face {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: rgba(0, 255, 0, 0.3);
+        border: 2px solid lime;
+        box-shadow: 0 0 15px lime;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .front {
+        transform: rotateY(0deg) translateZ(60px);
+      }
+      .back {
+        transform: rotateY(180deg) translateZ(60px);
+      }
+      .left {
+        transform: rotateY(-90deg) translateZ(60px);
+      }
+      .right {
+        transform: rotateY(90deg) translateZ(60px);
+      }
+      .top {
+        transform: rotateX(90deg) translateZ(60px);
+      }
+      .bottom {
+        transform: rotateX(-90deg) translateZ(60px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cube">
+      <div class="face front">1</div>
+      <div class="face back">2</div>
+      <div class="face left">3</div>
+      <div class="face right">4</div>
+      <div class="face top">5</div>
+      <div class="face bottom">6</div>
+    </div>
+
+    <script>
+      const cube = document.querySelector(".cube");
+      let isDragging = false,
+        startX,
+        startY,
+        currentX = 0,
+        currentY = 0;
+
+      // Mouse drag rotation
+      document.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX - currentX;
+        startY = e.clientY - currentY;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX - startX;
+        currentY = e.clientY - startY;
+        cube.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`;
+      });
+
+      document.addEventListener("mouseup", () => (isDragging = false));
+
+      // Click to change colors
+      cube.addEventListener("click", () => {
+        document.querySelectorAll(".face").forEach((face) => {
+          face.style.background = `rgb(${Math.random() * 255}, ${
+            Math.random() * 255
+          }, ${Math.random() * 255})`;
+        });
+      });
+    </script>
+  </body>
+</html>

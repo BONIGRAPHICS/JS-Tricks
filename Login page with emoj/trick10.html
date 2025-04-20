@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page with Emoji</title>
+    <style>
+      /* General Styles */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #121212;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+
+      /* Login Box */
+      .login-container {
+        background: #1e1e1e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        width: 320px;
+        text-align: center;
+      }
+
+      /* Emoji Face */
+      .emoji {
+        font-size: 50px;
+        transition: 0.3s ease-in-out;
+      }
+
+      /* Heading */
+      h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      /* Input Group */
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      label {
+        color: #bbb;
+        font-size: 14px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 5px;
+        background: #2a2a2a;
+        color: white;
+        font-size: 16px;
+        outline: none;
+      }
+
+      input:focus {
+        border: 2px solid lime;
+      }
+
+      /* Password Strength Indicator */
+      #password-strength {
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      /* Login Button */
+      button {
+        width: 100%;
+        padding: 10px;
+        background: lime;
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #00ff00;
+      }
+
+      /* Register Link */
+      .register {
+        color: white;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .register a {
+        color: lime;
+        text-decoration: none;
+      }
+
+      .register a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="emoji" id="emoji">😐</div>
+      <!-- Emoji Face -->
+      <h2>Login</h2>
+
+      <div class="input-group">
+        <label>Username</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your username"
+          onfocus="openEyes()"
+          onblur="neutralFace()"
+        />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          onfocus="closeEyes()"
+          oninput="checkPassword()"
+          onblur="neutralFace()"
+        />
+        <p id="password-strength"></p>
+      </div>
+
+      <button onclick="handleLogin()">Login</button>
+      <p class="register">Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+
+    <script>
+      function openEyes() {
+        document.getElementById("emoji").innerText = "😃"; // Open eyes while typing username
+      }
+
+      function closeEyes() {
+        document.getElementById("emoji").innerText = "😴"; // Close eyes while typing password
+      }
+
+      function neutralFace() {
+        document.getElementById("emoji").innerText = "😐"; // Neutral face when not typing
+      }
+
+      function checkPassword() {
+        const password = document.getElementById("password").value;
+        const strengthText = document.getElementById("password-strength");
+
+        if (password.length < 4) {
+          strengthText.innerText = "Weak Password";
+          strengthText.style.color = "red";
+        } else if (password.length < 8) {
+          strengthText.innerText = "Medium Strength";
+          strengthText.style.color = "orange";
+        } else {
+          strengthText.innerText = "Strong Password";
+          strengthText.style.color = "lime";
+        }
+      }
+
+      function handleLogin() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username === "" || password === "") {
+          alert("Please enter username and password!");
+        } else {
+          alert("Login Successful!");
+        }
+      }
+    </script>
+  </body>
+</html>
