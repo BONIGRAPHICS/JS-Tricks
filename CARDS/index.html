@@ -3,104 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auto-Scrolling Hacker Cards</title>
+  <title>Beautiful Scrolling Cards</title>
   <style>
     body {
       margin: 0;
-      background: #0f0f0f;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #d9afd9, #97d9e1);
       overflow: hidden;
-      color: #fff;
     }
 
     h1 {
       text-align: center;
-      padding: 20px;
-      color: #00ffe5;
-      text-shadow: 0 0 10px #00ffe5;
+      padding: 30px 0;
+      color: #fff;
+      font-size: 2.5rem;
+      animation: fadeInDown 1s ease-in-out;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroller-wrapper {
+      overflow: hidden;
+      position: relative;
+      height: 280px;
     }
 
     .scroller {
-      white-space: nowrap;
-      overflow: hidden;
-      box-sizing: border-box;
-      animation: scroll 30s linear infinite;
-      padding: 40px 0;
+      display: flex;
+      width: max-content;
+      animation: scroll 25s linear infinite;
     }
 
     .card {
-      display: inline-block;
-      width: 250px;
-      height: 160px;
+      flex: 0 0 auto;
+      width: 220px;
+      height: 220px;
       margin: 0 20px;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
-      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
       color: #fff;
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid #00ffe5;
-      transition: 0.3s;
-      cursor: pointer;
-      animation: pulse 3s infinite;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
-      animation: glitch 1s steps(2, end) infinite;
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
     }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-      }
-    }
-
-    @keyframes glitch {
-      0% { clip-path: inset(0 0 0 0); }
-      25% { clip-path: inset(5% 0 40% 0); }
-      50% { clip-path: inset(10% 0 30% 0); }
-      75% { clip-path: inset(15% 0 20% 0); }
-      100% { clip-path: inset(0 0 0 0); }
+      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
 <body>
-  <h1>🚀 Auto Hacker Cards</h1>
-  <div class="scroller" id="scroll-track">
-    <!-- You can duplicate or generate more cards if needed -->
-    <div class="card">💡 Idea Hub</div>
-    <div class="card">🧠 AI Engine</div>
-    <div class="card">🔒 Secure Vault</div>
-    <div class="card">🌐 Network Tool</div>
-    <div class="card">📈 Analytics</div>
-    <div class="card">⚙️ Dev Tools</div>
-    <div class="card">💾 Storage</div>
-    <div class="card">🔍 Search Bot</div>
-    <div class="card">🛠 System Fix</div>
-    <div class="card">🎮 Game Mode</div>
-    <div class="card">🧪 Lab Test</div>
-    <div class="card">📡 Signal Catcher</div>
-    <!-- Duplicated for seamless loop -->
-    <div class="card">💡 Idea Hub</div>
-    <div class="card">🧠 AI Engine</div>
-    <div class="card">🔒 Secure Vault</div>
-    <div class="card">🌐 Network Tool</div>
+  <h1>✨ Our Features in Style</h1>
+
+  <div class="scroller-wrapper">
+    <div class="scroller">
+      <div class="card">🚀 Speed</div>
+      <div class="card">🔒 Security</div>
+      <div class="card">💡 Innovation</div>
+      <div class="card">📈 Growth</div>
+      <div class="card">🎨 Design</div>
+      <div class="card">📱 Mobile-Ready</div>
+      <div class="card">⚙️ Automation</div>
+      <div class="card">🧠 Intelligence</div>
+      <!-- Repeat for continuous scroll -->
+      <div class="card">🚀 Speed</div>
+      <div class="card">🔒 Security</div>
+      <div class="card">💡 Innovation</div>
+      <div class="card">📈 Growth</div>
+    </div>
   </div>
 </body>
 </html>
