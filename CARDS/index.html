@@ -25,6 +25,11 @@
       animation: scroll 30s linear infinite;
     }
 
+    /* Pause animation on hover */
+    .slider:hover .slider-track {
+      animation-play-state: paused;
+    }
+
     .card {
       display: inline-block;
       width: 250px;
@@ -33,15 +38,46 @@
       background: rgba(255, 255, 255, 0.15);
       border-radius: 15px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       text-align: center;
       color: white;
       padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      border: 2px solid #00ffe5;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #00ffe5, #ff0099, #00ffe5);
+      background-size: 600% 600%;
+      animation: glowing 8s linear infinite;
+      opacity: 0.3;
+      filter: blur(4px);
     }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+
+    @keyframes glowing {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
@@ -49,7 +85,7 @@
 
   <div class="slider">
     <div class="slider-track">
-      <!-- Duplicate the cards set to create loop illusion -->
+      <!-- Duplicate cards for looping -->
       <div class="card">🚀 Project One</div>
       <div class="card">🎨 Design Two</div>
       <div class="card">📱 App Three</div>
@@ -57,7 +93,7 @@
       <div class="card">🧠 AI Five</div>
       <div class="card">🎮 Game Six</div>
 
-      <!-- Repeat for looping effect -->
+      <!-- Repeat -->
       <div class="card">🚀 Project One</div>
       <div class="card">🎨 Design Two</div>
       <div class="card">📱 App Three</div>
