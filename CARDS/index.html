@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auto Scrolling Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto Scrolling Cards with Modal</title>
   <style>
     body {
       margin: 0;
@@ -25,7 +25,6 @@
       animation: scroll 30s linear infinite;
     }
 
-    /* Pause animation on hover */
     .slider:hover .slider-track {
       animation-play-state: paused;
     }
@@ -45,6 +44,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 2px solid transparent;
       position: relative;
+      cursor: pointer;
     }
 
     .card:hover {
@@ -69,6 +69,16 @@
       filter: blur(4px);
     }
 
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -79,29 +89,115 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    .modal.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin: 0;
+    }
+
+    .modal-content p {
+      margin: 15px 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: red;
+    }
   </style>
 </head>
 <body>
 
   <div class="slider">
     <div class="slider-track">
-      <!-- Duplicate cards for looping -->
-      <div class="card">🚀 Project One</div>
-      <div class="card">🎨 Design Two</div>
-      <div class="card">📱 App Three</div>
-      <div class="card">💻 Dev Four</div>
-      <div class="card">🧠 AI Five</div>
-      <div class="card">🎮 Game Six</div>
+      <div class="card" onclick="showModal('Project One', 'A futuristic tool using AI')">
+        <h3>🚀 Project One</h3><p>AI-powered tool</p>
+      </div>
+      <div class="card" onclick="showModal('Design Two', 'Modern UI/UX experiments')">
+        <h3>🎨 Design Two</h3><p>Clean UI concepts</p>
+      </div>
+      <div class="card" onclick="showModal('App Three', 'Mobile app concept for productivity')">
+        <h3>📱 App Three</h3><p>Productivity app</p>
+      </div>
+      <div class="card" onclick="showModal('Dev Four', 'Web development workflow tools')">
+        <h3>💻 Dev Four</h3><p>Workflow helper</p>
+      </div>
+      <div class="card" onclick="showModal('AI Five', 'Experimental GPT integration')">
+        <h3>🧠 AI Five</h3><p>Smart assistant</p>
+      </div>
+      <div class="card" onclick="showModal('Game Six', 'HTML5 mini-game demo')">
+        <h3>🎮 Game Six</h3><p>Fun to play</p>
+      </div>
 
       <!-- Repeat -->
-      <div class="card">🚀 Project One</div>
-      <div class="card">🎨 Design Two</div>
-      <div class="card">📱 App Three</div>
-      <div class="card">💻 Dev Four</div>
-      <div class="card">🧠 AI Five</div>
-      <div class="card">🎮 Game Six</div>
+      <div class="card" onclick="showModal('Project One', 'A futuristic tool using AI')">
+        <h3>🚀 Project One</h3><p>AI-powered tool</p>
+      </div>
+      <div class="card" onclick="showModal('Design Two', 'Modern UI/UX experiments')">
+        <h3>🎨 Design Two</h3><p>Clean UI concepts</p>
+      </div>
+      <div class="card" onclick="showModal('App Three', 'Mobile app concept for productivity')">
+        <h3>📱 App Three</h3><p>Productivity app</p>
+      </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <script>
+    function showModal(title, desc) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+    }
+  </script>
 
 </body>
 </html>
